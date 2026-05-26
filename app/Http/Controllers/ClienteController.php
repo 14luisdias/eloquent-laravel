@@ -43,16 +43,29 @@ class ClienteController extends Controller
 
 
         if (!isset($request->id)) {
-            $cliente = new Client;
+            //$cliente = new Client;
+            $cliente = Client::create([
+                'nome' => $request->nome,
+                'email' => $request->email,
+                'endereco' => $request->endereco,
+                'descricao' => $request->descricao
+            ]);
         }else{
             $cliente = Client::find($request->id);
+            $cliente->update([
+                'nome' => $request->nome,
+                'email' => $request->email,
+                'endereco' => $request->endereco,
+                'descricao' => $request->descricao
+            ]);
         }
         
-        $cliente->nome = $request->nome;
-        $cliente->endereco = $request->endereco;
-        $cliente->descricao = $request->descricao;
+
+        // $cliente->nome = $request->nome;
+        // $cliente->endereco = $request->endereco;
+        // $cliente->descricao = $request->descricao;
         
-        $cliente->save();
+        // $cliente->save();
         
         return redirect('/clientes');
 
