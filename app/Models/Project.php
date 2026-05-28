@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Project extends Model
+{
+    //
+    use HasFactory;
+    protected $fillable = [
+        'nome',
+        'orcamento',
+        'data_inicio',
+        'data_final',
+        'client_id',
+    ];  
+
+    /*
+        * Define a relação de projeto pertence a um cliente
+    */
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id', 'id');
+    }
+}

@@ -14,4 +14,12 @@ class Employee extends Model
         'dt_contratacao',
         'dt_demissao',
     ];
+
+    /*
+        * Define a relação de funcionário tem um endereço
+    */
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
 }

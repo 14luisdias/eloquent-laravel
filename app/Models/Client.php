@@ -16,4 +16,11 @@ class Client extends Model
         'descricao',
     ]; 
     
+    /*
+        * Define a relação de cliente tem muitos projetos
+    */
+    public function projects()
+    {
+        return $this->hasMany(Project::class, 'client_id', 'id');
+    }
 }
