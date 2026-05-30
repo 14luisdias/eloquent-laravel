@@ -22,4 +22,12 @@ class Employee extends Model
     {
         return $this->hasOne(Address::class);
     }
+    
+    /*
+        * Define a relação de funcionário tem muitos projetos
+    */
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'employee_project', 'employee_id', 'project_id');
+    }
 }

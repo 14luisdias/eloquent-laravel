@@ -40,6 +40,9 @@
                                 Descrição
                             </th>
                             <th scope="col" class="px-6 py-3 text-center">
+                                Projetos
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center">
                                 Ação
                             </th>
                         </tr>
@@ -51,6 +54,13 @@
                             <td class="px-6 py-4"> {{ $cliente->nome }} </th>
                             <td class="px-6 py-4"> {{ $cliente->endereco }} </td>
                             <td class="px-6 py-4"> {{ $cliente->descricao }} </td>
+                            <td class="px-6 py-4"> 
+                               @forelse ($cliente->projects as $project)
+                                    <p>{{ $project->nome }}</p>
+                               @empty
+                                   Nenhum projeto encontrado
+                               @endforelse
+                            </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center justify-center flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
                                     <button id="dropdownActionButton-{{ $cliente->id }}" data-dropdown-toggle="dropdownAction-{{$cliente->id }}"

@@ -24,4 +24,11 @@ class Project extends Model
     {
         return $this->belongsTo(Client::class, 'client_id', 'id');
     }
+    /*
+        * Define a relação de projeto tem muitos funcionários
+    */
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class, 'employee_project', 'project_id', 'employee_id');
+    }
 }
